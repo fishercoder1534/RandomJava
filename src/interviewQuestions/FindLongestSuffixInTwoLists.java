@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 /**
  * Pinterest onsite question: find the longest suffix in two linked lists

@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 //Given a sorted array and a target, return the index of the target in this array, return -1 if not found.
 public class BinarySearch {
 
