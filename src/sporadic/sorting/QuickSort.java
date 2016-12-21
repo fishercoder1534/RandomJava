@@ -1,4 +1,4 @@
-package sorting;
+package sporadic.sorting;
 
 public class QuickSort {
 	public int[] quickSort(int[] nums){

@@ -1,4 +1,4 @@
-package sorting;
+package sporadic.sorting;
 
 public class MergeSort {
 	public static void main(String...strings){

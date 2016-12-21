@@ -1,4 +1,4 @@
-package sorting;
+package sporadic.sorting;
 
 import java.util.Random;
 
