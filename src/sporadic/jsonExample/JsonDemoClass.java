@@ -6,9 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 /**This package is to demo how @JsonIgnore and @JsonIgnorProperties and @JsonProperty work:
@@ -22,27 +20,57 @@ import lombok.ToString;
 @ToString
 @JsonIgnoreProperties({"noInterestingMember", "forgetThisField"})
 public class JsonDemoClass {
-	@Getter
-	@Setter
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNoInterestingMember() {
+		return noInterestingMember;
+	}
+
+	public void setNoInterestingMember(String noInterestingMember) {
+		this.noInterestingMember = noInterestingMember;
+	}
+
+	public int getAnotherMember() {
+		return anotherMember;
+	}
+
+	public void setAnotherMember(int anotherMember) {
+		this.anotherMember = anotherMember;
+	}
+
+	public double getForgetThisField() {
+		return forgetThisField;
+	}
+
+	public void setForgetThisField(double forgetThisField) {
+		this.forgetThisField = forgetThisField;
+	}
+
 	@JsonProperty("ID")
 	public long id;
-	
-	@Getter
-	@Setter
+
 	@JsonProperty("NAME")
 	public String name;
-	
-	@Getter
-	@Setter
+
 	public String noInterestingMember;
-	
-	@Getter
-	@Setter
+
 	@JsonIgnore
 	@JsonProperty("ANOTHER-MEMEBR")
 	public int anotherMember;
-	
-	@Getter
-	@Setter
+
 	public double forgetThisField;
 }

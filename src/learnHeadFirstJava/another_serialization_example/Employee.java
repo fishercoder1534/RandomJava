@@ -6,9 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 //Any one of the following three annotations: @Service, @Repository and @Component will work fine here since I'm doing a component-scan.
 //@Component
@@ -16,20 +14,51 @@ import lombok.Setter;
 @Service
 @RequiredArgsConstructor
 public class Employee implements Serializable {
-	@Setter
-	@Getter
 	private String address;
-	@Setter
-	@Getter
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public int getSSN() {
+		return SSN;
+	}
+
+	public void setSSN(int SSN) {
+		this.SSN = SSN;
+	}
+
 	private String name;
-	@Setter
-	@Getter
 	private int age;
-	@Setter
-	@Getter
 	private double salary;
-	@Setter
-	@Getter
 	private transient int SSN;// any field that cannot be serialized needs to be
 								// marked as transient, for demo purpose, we
 								// just set SSN as a non-serializable field, it
