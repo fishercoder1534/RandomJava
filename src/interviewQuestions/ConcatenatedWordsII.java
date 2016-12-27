@@ -1,4 +1,4 @@
-package interviewQuestions;
+package InterviewQuestions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
