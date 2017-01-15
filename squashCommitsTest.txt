@@ -3,3 +3,4 @@ This is a series of test commits to really understand how to squash commits usin
 3rd commit.
 4th commit.
 5th commit.
+6th commit.
