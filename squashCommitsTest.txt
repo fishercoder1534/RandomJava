@@ -1,1 +1,2 @@
 This is a series of test commits to really understand how to squash commits using Git.
+2nd commit.
