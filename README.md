@@ -1,2 +1,2 @@
 # RandomJava
-Please download spring-*.jar, apache-logging, JAF, Javamail and other necessary jars and put them onto your classpath or add them as external libraries, otherwise your IntelliJ/Eclipse won't smile. ^ ^
+This is a Maven project containing a bunch of Random Java programs that I used, wrote from time to time.
