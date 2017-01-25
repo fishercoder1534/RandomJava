@@ -1,5 +1,4 @@
-# RandomJava
-[![Build Status](https://travis-ci.org/fishercoder1534/Leetcode.svg?branch=master)](https://travis-ci.org/fishercoder1534/Leetcode)
+# RandomJava [![Build Status](https://travis-ci.org/fishercoder1534/RandomJava.svg?branch=master)](https://travis-ci.org/fishercoder1534/RandomJava)
 This is a Maven project containing a bunch of Random Java programs that I used, wrote from time to time.
 
 Build instructions:
