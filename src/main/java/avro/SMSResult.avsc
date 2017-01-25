@@ -1,0 +1,27 @@
+[
+{
+  "type": "record",
+  "name": "VendorItemInfo",
+  "fields": [
+      {"name": "vendorItemId", "type": "string"},
+      {"name": "price", "type": "long"},
+      {"name": "deliveryChargeType", "type": "string"}
+  ]
+},
+{
+  "type": "enum",
+  "name": "WriteType",
+  "symbols" : ["JSON", "AVRO"]
+},
+{
+  "type": "record",
+  "name": "SMSResult",
+  "fields": [
+      {"name": "writeType", "type": "WriteType"},
+      {"name": "numFound", "type": "int"},
+      {"name": "docs", "type": "string"},
+      {"name": "mainImagePath", "type": "string"},
+      {"name": "vendorItemInfos", "type": {"type": "array", "items": "VendorItemInfo"}}
+  ]
+}
+]
