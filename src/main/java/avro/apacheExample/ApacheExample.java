@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * This code is credited to: http://hadooptutorial.info/avro-serializing-and-deserializing-example-java-api/
  * Created by stevesun on 1/24/17.
  */
 public class ApacheExample {
