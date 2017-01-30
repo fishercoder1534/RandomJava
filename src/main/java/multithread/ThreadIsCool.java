@@ -1,4 +1,4 @@
-package thread;
+package multithread;
 
 /** This is a cool and small program to show that threads don't run in the order that you can control, it's all scheduled by the thing called
  * Thread Scheduler.*/
@@ -7,32 +7,32 @@ public class ThreadIsCool implements Runnable{
 
 	public static void main(String [] args){
 		ThreadIsCool threadIsCool = new ThreadIsCool();
-		Thread abc = new Thread(threadIsCool);
-		Thread def = new Thread(threadIsCool);
-		Thread ghi = new Thread(threadIsCool);
-		abc.setName("abc");
-		def.setName("def");
-		ghi.setName("ghi");
+		Thread thread1 = new Thread(threadIsCool);
+		Thread thread2 = new Thread(threadIsCool);
+		Thread thread3 = new Thread(threadIsCool);
+		thread1.setName("abc");
+		thread2.setName("def");
+		thread3.setName("ghi");
 		System.out.println("Now the three threads kick off:");
 		
-		abc.start();
+		thread1.start();
 		try {
 		    /* Start second thread(def) only when first thread(abc) is dead*/
-            abc.join();
+            thread1.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 		
-		def.start();
+		thread2.start();
 		try {
-            def.join();
+            thread2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 		
-		ghi.start();
+		thread3.start();
 		try {
-            ghi.join();
+            thread3.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

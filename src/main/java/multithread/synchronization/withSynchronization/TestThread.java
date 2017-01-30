@@ -1,7 +1,7 @@
 /**
  * 
  */
-package thread.synchronization.withSynchronization;
+package multithread.synchronization.withSynchronization;
 
 /**
  * This produces the SAME result every time you run this program, in contrast to

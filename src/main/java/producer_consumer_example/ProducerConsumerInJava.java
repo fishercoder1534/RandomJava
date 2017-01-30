@@ -1,6 +1,3 @@
-/**
- * 
- */
 package producer_consumer_example;
 
 import java.util.LinkedList;

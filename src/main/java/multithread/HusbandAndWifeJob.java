@@ -1,4 +1,4 @@
-package thread;
+package multithread;
 
 public class HusbandAndWifeJob implements Runnable {
 

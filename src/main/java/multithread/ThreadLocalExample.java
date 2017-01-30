@@ -1,4 +1,4 @@
-package thread;
+package multithread;
 
 /**
  * The ThreadLocal class in Java enables you to create variables that can only
