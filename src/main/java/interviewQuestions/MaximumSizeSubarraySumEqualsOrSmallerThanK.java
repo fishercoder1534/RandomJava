@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 import java.util.HashMap;
 import java.util.Map;

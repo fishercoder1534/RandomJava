@@ -1,4 +1,4 @@
-package InterviewQuestions;
+package interviewQuestions;
 
 /**With Cracking group on 11/23/2013, a very fruitful day.
 
