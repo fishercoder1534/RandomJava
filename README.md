@@ -5,6 +5,7 @@ Build instructions:
 If you get compile/run/IntelliJ errors, e.g. ClassNotFoundException when running in IntelliJ, just rm your package from your local machine, use IntelliJ to directly open:
 File -> New -> Project from Version Control -> GitHub, then configure JDK8, then you'll fly with colors! ^ ^
 
-|      Package   |   code
+|      Package/Theme   |   Code
 |----------------|---------------
-|Avro|[Solution](../master/src/main/java/avro)
+|Avro|[Avro code](../master/src/main/java/avro)
+|Java 8 tutorials|[Java 8](../master/src/main/java/java8tutorials)
