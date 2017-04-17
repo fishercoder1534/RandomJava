@@ -19,6 +19,12 @@ public class FunctionalInterfacesDemo {
         Converter<String, Integer> converter = (from -> Integer.valueOf(from));
         Integer converted = converter.convert("123");
         System.out.println(converted);
+
+        //we can use :: keyword to simplify the above
+        //that is how to reference a static method
+        converter = Integer::valueOf;
+        converted = converter.convert("321");
+        System.out.println(converted);
     }
 
 }
