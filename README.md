@@ -7,4 +7,4 @@ File -> New -> Project from Version Control -> GitHub, then configure JDK8, then
 
 |      Package   |   code
 |----------------|---------------
-|Avro|[Solution](../master/src/main/avro)
+|Avro|[Solution](../master/src/main/java/avro)
