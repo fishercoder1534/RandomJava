@@ -34,20 +34,15 @@ public class InsertionSort {
 		nums[j] = temp;
 	}
 	
-	public static void print(int[] nums){
-		for(int i : nums) System.out.print( i + ", ");
-		System.out.println();
-	}
-	
 	public static void main(String... args){
 //		System.out.println(2 >> 4);
 //		System.out.println(Integer.toBinaryString(32));
 		int[] nums = generateRandomArray(10);
 		InsertionSort test = new InsertionSort();
-		test.print(nums);
+		SortUtils.print(nums);
 //		test.swap(nums, 2, 0);
 //		test.print(nums);
-		test.print(test.insertionSortAgain(nums));
+		SortUtils.print(test.insertionSortAgain(nums));
 //		test.print(test.insertionSort(nums));
 	}
 	

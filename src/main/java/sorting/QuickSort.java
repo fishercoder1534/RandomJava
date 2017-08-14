@@ -9,16 +9,16 @@ public class QuickSort {
 	private void quickSort(int[] nums, int low, int high) {
 		if(low < high){
 			System.out.println("low = " + low + " high = " + high);
-			InsertionSort.print(nums);
+			SortUtils.print(nums);
 			int pi = partition_last(nums, low, high);
 			System.out.println("pi = " + pi);
-			InsertionSort.print(nums);
+			SortUtils.print(nums);
 			quickSort(nums, low, pi-1);
 			System.out.println("from " + low + " to " + (pi - 1) + " is already sorted, we'll start to sort the right half from " + (pi+1) + " to " + high);
-			InsertionSort.print(nums);
+			SortUtils.print(nums);
 			quickSort(nums, pi+1, high);
 			System.out.println("Final sorted list is: ");
-			InsertionSort.print(nums);
+			SortUtils.print(nums);
 		}
 		
 	}
@@ -79,14 +79,14 @@ public class QuickSort {
 	public static void main(String... args){
 		int[] nums = InsertionSort.generateRandomArray(17);
 //		int[] nums = new int[]{10, 7, 8, 9, 1, 5};
-		InsertionSort.print(nums);
+		SortUtils.print(nums);
 //		test.swap(nums, 2, 0);
 //		test.print(nums);
 		QuickSort test = new QuickSort();
 //		InsertionSort.print(test.quickSort(nums));
 //		InsertionSort.print(test.quickSort_20160628(nums));
 //		InsertionSort.print(test.quickSort_pivot_first_20160628(nums));
-		InsertionSort.print(test.quickSort_pivot_median_20160628(nums));
+		SortUtils.print(test.quickSort_pivot_median_20160628(nums));
 		
 		
 	}
