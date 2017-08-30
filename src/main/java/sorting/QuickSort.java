@@ -1,51 +1,61 @@
 package sorting;
 
 public class QuickSort {
-	public int[] quickSort(int[] nums){
-		quickSort(nums, 0, nums.length-1);
-		return nums;
+
+	public static class QuickSortPartitionLast {
+		public int[] quickSort(int[] nums) {
+			quickSort(nums, 0, nums.length - 1);
+			return nums;
+		}
+
+		private void quickSort(int[] nums, int low, int high) {
+			if (low < high) {
+				int pi = partitionLast(nums, low, high);
+				quickSort(nums, low, pi - 1);
+				quickSort(nums, pi + 1, high);
+			}
+
+		}
+
+		private int partitionLast(int[] nums, int low, int high) {
+			int pivot = nums[high];
+			int i = (low - 1);
+			for (int j = low; j <= high - 1; j++) {
+				if (nums[j] <= pivot) {
+					i++;
+					//swap nums[i] and nums[j]
+					int temp = nums[i];
+					nums[i] = nums[j];
+					nums[j] = temp;
+				}
+			}
+
+			//swap nums[i+1] and nums[high]
+			int temp = nums[i + 1];
+			nums[i + 1] = nums[high];
+			nums[high] = temp;
+
+			return i + 1;
+		}
 	}
 
-	private void quickSort(int[] nums, int low, int high) {
-		if(low < high){
-			System.out.println("low = " + low + " high = " + high);
-			SortUtils.print(nums);
-			int pi = partition_last(nums, low, high);
-			System.out.println("pi = " + pi);
-			SortUtils.print(nums);
-			quickSort(nums, low, pi-1);
-			System.out.println("from " + low + " to " + (pi - 1) + " is already sorted, we'll start to sort the right half from " + (pi+1) + " to " + high);
-			SortUtils.print(nums);
-			quickSort(nums, pi+1, high);
-			System.out.println("Final sorted list is: ");
-			SortUtils.print(nums);
+	public static class QuickSortPartitionFirst {
+		public int[] quickSort(int[] nums) {
+			quickSort(nums, 0, nums.length - 1);
+			return nums;
 		}
-		
-	}
-	
-	private int partition_last(int[] nums, int low, int high) {
-		int pivot = nums[high];
-		int i = (low-1);
-		for(int j = low; j <= high-1; j++){
-			if(nums[j] <= pivot){
-				i++;
-				//swap nums[i] and nums[j]
-				int temp = nums[i];
-				nums[i] = nums[j];
-				nums[j] = temp;
+
+		private void quickSort(int[] nums, int low, int high) {
+			if (low < high) {
+				int pi = partitionFirst(nums, low, high);
+				quickSort(nums, low, pi - 1);
+				quickSort(nums, pi + 1, high);
 			}
+
 		}
-		
-		//swap nums[i+1] and nums[high]
-		int temp = nums[i+1];
-		nums[i+1] = nums[high];
-		nums[high] = temp;
-		
-		return i+1;
-	}
-	
-	// this method find the pivot and do the sorting
-		private int partition_first(int[] list, int first, int last) {
+
+		// this method find the pivot and do the sorting
+		private int partitionFirst(int[] list, int first, int last) {
 			int pivot = list[first];
 			int low = first + 1; // searching forward from pivot'next element
 			int high = last;// searching from the end for backward
@@ -75,6 +85,7 @@ public class QuickSort {
 				return first;
 			}
 		}
+	}
 	
 	public static void main(String... args){
 		int[] nums = InsertionSort.generateRandomArray(17);
