@@ -1,4 +1,4 @@
-package designPatterns.chapter_3_decorator_pattern;
+package designPatterns.decorator_pattern;
 
 public abstract class CondimentDecorator extends Beverage {
 	public abstract String getDescription();

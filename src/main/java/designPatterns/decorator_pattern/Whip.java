@@ -1,4 +1,4 @@
-package designPatterns.chapter_3_decorator_pattern;
+package designPatterns.decorator_pattern;
 
 public class Whip extends CondimentDecorator {
 

@@ -1,4 +1,4 @@
-package designPatterns.chapter_1_strategy_pattern;
+package designPatterns.strategy_pattern;
 
 /**
  * The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable.

@@ -1,4 +1,4 @@
-package designPatterns.chapter_1_strategy_pattern;
+package designPatterns.strategy_pattern;
 
 public abstract class Wife {
 
