@@ -7,7 +7,8 @@ package designPatterns.strategy_pattern;
 /**Design principle:
  * Favor composition over inheritance.
  * 
- * Not only does it let you encapsulate a family of algorithms into their own set of classes, but it also lets you change behavior at runtime.*/
+ * Not only does it let you encapsulate a family of algorithms into their own set of classes,
+ * but it also lets you change behavior at runtime.*/
 public class StrategtyPatternTestDrive {
 
 	public static void main(String[] args) {
