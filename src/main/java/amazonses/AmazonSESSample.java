@@ -41,6 +41,7 @@ public class AmazonSESSample {
   public static void main(String[] args) throws IOException {
 
     try {
+
       BasicAWSCredentials credentials = new BasicAWSCredentials("ACCESS_KEY", "SECRET_KEY");
       AmazonSimpleEmailService client =
           new AmazonSimpleEmailServiceClient(credentials).withRegion(Regions.US_WEST_2);
