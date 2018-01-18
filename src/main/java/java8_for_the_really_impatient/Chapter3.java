@@ -48,5 +48,4 @@ public class Chapter3 extends Application {
 
   /** 3.5 Composition: saves the storage of an intermediate stage. */
 
-
 }
