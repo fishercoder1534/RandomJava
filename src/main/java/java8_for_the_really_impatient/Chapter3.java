@@ -34,7 +34,7 @@ public class Chapter3 extends Application {
   public void start(Stage stage) throws Exception {
     Image image = new Image("queen-mary.png");
     Image newImage = transform(image,
-        (c, factor) -> c.deriveColor(0, 1, factor, 1), 1.5
+        (c, factor) -> c.deriveColor(0, 1, factor, 1), 0.05
     );
     stage.setScene(new Scene(new HBox(new ImageView(image), new ImageView(newImage))));
     stage.show();
