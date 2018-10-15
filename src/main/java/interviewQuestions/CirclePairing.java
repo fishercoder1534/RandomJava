@@ -2,14 +2,16 @@ package interviewQuestions;
 
 public class CirclePairing {
 
-  /**warm up round:
-   * Given a list of words, find the longest common prefix.
+  /**Round 1: give two words, find the longest common prefix between the two.
+   *  This should be super easy. Just to warm up the candidate.
+   *
+   * Round 2: what if you're given N words
    *
    * ["flower","flow","flight"] return "fl"
    * ["dog","racecar","car"] return ""
    *
-   * what's the time complexity of your solution?
-   * what's the space complexity of your solution?
+   * what's the time complexity of your solution? O(S) where S is all the chars in all strings, since in the worst case, all the strings are the same
+   * what's the space complexity of your solution? O(1) no additional space needed.
    * */
 
   /**Solution 1: Horizontal scanning*/
@@ -66,7 +68,7 @@ public class CirclePairing {
   }
 
   /**
-   * Round 2: (if candidate passed warm-up round smoothly.)
+   * Round 3:
    *
    * Suppose the given list of words are highly sorted and there're over 10 billion words.
    * Design an algorithm that works efficiently.
@@ -93,12 +95,82 @@ public class CirclePairing {
    * what's the space complexity of your solution?
    * */
 
+  public static class Solution1 {
+    class TrieNode {
+
+      char val;
+      boolean isWord;
+      TrieNode[] children = new TrieNode[26];
+
+      // Initialize your data structure here.
+      public TrieNode() {
+      }
+
+      public TrieNode(char c) {
+        this.val = c;
+      }
+    }
+
+    public class Trie {
+      private TrieNode root;
+
+      public Trie() {
+        root = new TrieNode();
+        root.val = ' ';//initialize root to be an empty char, this is a common practice as how Wiki defines Trie data structure as well
+      }
+
+      // Inserts a word into the trie.
+      public void insert(String word) {
+        TrieNode node = root;
+        for (int i = 0; i < word.length(); i++) {
+          if (node.children[word.charAt(i) - 'a'] == null) {
+            node.children[word.charAt(i) - 'a'] = new TrieNode(word.charAt(i));
+          }
+          node = node.children[word.charAt(i) - 'a'];
+        }
+        node.isWord = true;
+      }
+
+      // Returns if the word is in the trie.
+      public boolean search(String word) {
+        TrieNode node = root;
+        for (int i = 0; i < word.length(); i++) {
+          if (node.children[word.charAt(i) - 'a'] == null) {
+            return false;
+          }
+          node = node.children[word.charAt(i) - 'a'];
+        }
+        return node.isWord;
+      }
+
+      // Returns if there is any word in the trie
+      // that starts with the given prefix.
+      public boolean startsWith(String prefix) {
+        TrieNode node = root;
+        for (int i = 0; i < prefix.length(); i++) {
+          if (node.children[prefix.charAt(i) - 'a'] == null) {
+            return false;
+          }
+          node = node.children[prefix.charAt(i) - 'a'];
+        }
+        return true;
+      }
+    }
+
+    // Your Trie object will be instantiated and called as such:
+    // Trie trie = new Trie();
+    // trie.insert("somestring");
+    // trie.search("key");
+  }
 
   /**
-   * Round 3: (if candidate passed round 2 smoothly, this should be rare already.)
+   * Round 4:
    *
    * What if the given list needs to support more than English characters? For instance, we have international markets like Japan,
    * how do we support Japanase characters?*/
+
+
+   /** Round 5: How to support constantly adding new words and removing existing words, also return longest common prefix at any given timestamp*/
 
 
   public static void main(String... args) {
