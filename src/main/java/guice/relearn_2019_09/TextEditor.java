@@ -7,9 +7,9 @@ public class TextEditor {
 
     /**Consider you have an application which has a text editor component and you want to provide a spell check. Your standard code would look something like this.
      * Note that here we have created a dependency between the TextEditor and the SpellChecker.*/
-    public TextEditor() {
-        spellChecker = new SpellChecker();
-    }
+//    public TextEditor() {
+//        spellChecker = new SpellChecker();
+//    }
 
     /**In an inversion of control scenario, we would instead do something like this:
      *
@@ -18,5 +18,9 @@ public class TextEditor {
     @Inject
     public TextEditor(SpellChecker spellChecker) {
         this.spellChecker = spellChecker;
+    }
+
+    public void makeSpellCheck() {
+        spellChecker.checkSpelling();
     }
 }

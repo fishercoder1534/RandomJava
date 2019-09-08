@@ -1,4 +1,5 @@
 package guice.relearn_2019_09;
 
-public class SpellChecker {
+public interface SpellChecker {
+    void checkSpelling();
 }
