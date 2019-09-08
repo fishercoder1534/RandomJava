@@ -2,12 +2,16 @@ package guice.relearn_2019_09;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * An injector is the object-graph builder
  * and a Module is its core building block.
- * Thus, the first step is to create an injector and then use the injector to get the objects.*/
+ * Thus, the first step is to create an injector and then use the injector to get the objects.
+ *
+ *
+ * In the this example,
+ * TextEditor class object graph is constructed by Guice and
+ * this graph contains TextEditor object and its dependency as WinWordSpellChecker object.*/
 public class MainApp {
     public static void main(String[] args) {
         /*
@@ -21,6 +25,6 @@ public class MainApp {
          */
         TextEditor textEditor = injector.getInstance(TextEditor.class);
 
-        System.out.println("textEditor: " + textEditor);
+        System.out.println("textEditor is instantiated.");
     }
 }
