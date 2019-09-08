@@ -1,4 +1,4 @@
-package guice.relearn_2019_09;
+package guice.relearn_2019_09.named_annotation_example;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
@@ -16,7 +16,6 @@ public class TextEditorModule extends AbstractModule {
          * Bind SpellChecker binding to WinWordSpellChecker implementation
          * whenever spellChecker dependency is used.
          */
-        bind(SpellChecker.class).to(WinWordSpellChecker.class);
         bind(String.class).annotatedWith(Names.named("JDBC")).toInstance("jdbc:mysql://localhost:5326/emp");
     }
 }

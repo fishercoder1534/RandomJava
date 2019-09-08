@@ -1,4 +1,4 @@
-package guice.relearn_2019_09;
+package guice.relearn_2019_09.named_annotation_example;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -24,7 +24,6 @@ public class MainApp {
          * Build object using injector
          */
         TextEditor textEditor = injector.getInstance(TextEditor.class);
-//        textEditor.makeSpellCheck();
         textEditor.makeConnection();
 
         System.out.println("textEditor is instantiated.");
