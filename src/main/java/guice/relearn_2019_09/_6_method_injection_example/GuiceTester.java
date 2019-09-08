@@ -58,8 +58,9 @@ class SpellCheckerImpl implements SpellChecker {
     public SpellCheckerImpl() {
     }
 
+    //the method name does not impact injection
     @Inject
-    public void setDbUrl(@Named("JDBC") String dbUrl) {
+    public void helloWorldSetDbUrl(@Named("JDBC") String dbUrl) {
         this.dbUrl = dbUrl;
     }
 
