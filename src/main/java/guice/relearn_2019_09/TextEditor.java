@@ -1,6 +1,7 @@
 package guice.relearn_2019_09;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 public class TextEditor {
     private SpellChecker spellChecker;
@@ -15,12 +16,29 @@ public class TextEditor {
      *
      * Here, the TextEditor should not worry about SpellChecker implementation.
      * The SpellChecker will be implemented independently and will be provided to the TextEditor at the time of TextEditor instantiation.*/
+//    @Inject
+//    public TextEditor(SpellChecker spellChecker) {
+//        this.spellChecker = spellChecker;
+//    }
+//
+//    public void makeSpellCheck() {
+//        spellChecker.checkSpelling();
+//    }
+
+
+
+    /**
+     * Inject using @Named annotation
+     *
+     * This can be achived using toInstance() method.*/
+    private String dbUrl;
+
     @Inject
-    public TextEditor(SpellChecker spellChecker) {
-        this.spellChecker = spellChecker;
+    public TextEditor(@Named("JDBC") String dbUrl) {
+        this.dbUrl = dbUrl;
     }
 
-    public void makeSpellCheck() {
-        spellChecker.checkSpelling();
+    public void makeConnection() {
+        System.out.println(dbUrl);
     }
 }

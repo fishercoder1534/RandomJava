@@ -24,7 +24,8 @@ public class MainApp {
          * Build object using injector
          */
         TextEditor textEditor = injector.getInstance(TextEditor.class);
-        textEditor.makeSpellCheck();
+//        textEditor.makeSpellCheck();
+        textEditor.makeConnection();
 
         System.out.println("textEditor is instantiated.");
     }

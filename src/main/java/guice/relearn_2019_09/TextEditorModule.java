@@ -1,6 +1,7 @@
 package guice.relearn_2019_09;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.name.Names;
 
 /**
  * Dependency Injection is controlled by the Guice Bindings.
@@ -16,5 +17,6 @@ public class TextEditorModule extends AbstractModule {
          * whenever spellChecker dependency is used.
          */
         bind(SpellChecker.class).to(WinWordSpellChecker.class);
+        bind(String.class).annotatedWith(Names.named("JDBC")).toInstance("jdbc:mysql://localhost:5326/emp");
     }
 }
