@@ -1,9 +1,9 @@
-package guice.relearn_2019_09.simple_binding_example;
+package guice.relearn_2019_09._1_simple_binding_example;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import guice.relearn_2019_09.named_annotation_example.TextEditor;
-import guice.relearn_2019_09.named_annotation_example.TextEditorModule;
+import guice.relearn_2019_09._2_named_annotation_example.TextEditor;
+import guice.relearn_2019_09._2_named_annotation_example.TextEditorModule;
 
 /**
  * An injector is the object-graph builder

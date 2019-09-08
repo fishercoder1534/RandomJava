@@ -1,4 +1,4 @@
-package guice.relearn_2019_09.simple_binding_example;
+package guice.relearn_2019_09._1_simple_binding_example;
 
 import com.google.inject.AbstractModule;
 

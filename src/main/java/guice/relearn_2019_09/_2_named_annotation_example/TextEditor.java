@@ -1,4 +1,4 @@
-package guice.relearn_2019_09.named_annotation_example;
+package guice.relearn_2019_09._2_named_annotation_example;
 
 import javax.inject.Inject;
 import javax.inject.Named;

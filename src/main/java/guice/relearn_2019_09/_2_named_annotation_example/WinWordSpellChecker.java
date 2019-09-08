@@ -1,4 +1,4 @@
-package guice.relearn_2019_09.simple_binding_example;
+package guice.relearn_2019_09._2_named_annotation_example;
 
 public class WinWordSpellChecker implements SpellChecker {
     @Override
