@@ -2,6 +2,9 @@ package sporadic;
 
 import java.util.Set;
 
+/**Posted the question here:
+ * https://softwareengineering.stackexchange.com/questions/398727/how-to-generalize-this-method-for-its-duplicate-common-logic/398731#398731
+ * */
 public class GeneralizeExample {
 
     /**Apparently the logic in specificMethod is duplicated, how can we generalize them and make it extensible? In case there's SetThree, SetFour in the future that needs to be added to this method?*/
