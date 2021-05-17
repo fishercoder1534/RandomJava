@@ -2,8 +2,10 @@
 This is a Maven project containing a bunch of Random Java programs that I used, wrote from time to time.
 
 Build instructions:
-If you get compile/run/IntelliJ errors, e.g. ClassNotFoundException when running in IntelliJ, just rm your package from your local machine, use IntelliJ to directly open:
+* `git clone` this repo to your local, then open this application as a Maven project.
+* If you get compile/run/IntelliJ errors, e.g. ClassNotFoundException when running in IntelliJ, just rm your package from your local machine, use IntelliJ to directly open:
 File -> New -> Project from Version Control -> GitHub, then configure JDK8, then you'll fly with colors! ^ ^
+* Please use JDK8 to run this application, due to https://stackoverflow.com/a/51169519/4117496
 
 |      Package/Theme   |   Code
 |----------------|---------------
