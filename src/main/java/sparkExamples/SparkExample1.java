@@ -35,7 +35,7 @@ public class SparkExample1 {
             SparkSession spark = SparkSession
                     .builder()
                     .appName("SparkJob")
-                    .config("spark.master", "local")//keep this one commented out if you want to run in cluster mode
+//                    .config("spark.master", "local")//keep this one commented out if you want to run in cluster mode
                     .getOrCreate();
             System.out.println("SparkSession is initated.");
 
