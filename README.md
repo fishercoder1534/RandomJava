@@ -7,6 +7,7 @@ Build instructions:
 File -> New -> Project from Version Control -> GitHub, then configure JDK8, then you'll fly with colors! ^ ^
 * run `mvn install` to install depedencies on your machine
 * In your Intellij, click the Maven icon and click on Reload all Maven projects
+
 |      Package/Theme   |   Code
 |----------------|---------------
 |Avro|[Avro code](../master/src/main/java/avro)
