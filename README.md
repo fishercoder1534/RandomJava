@@ -5,8 +5,8 @@ Build instructions:
 * `git clone` this repo to your local, then open this application as a Maven project.
 * If you get compile/run/IntelliJ errors, e.g. ClassNotFoundException when running in IntelliJ, just rm your package from your local machine, use IntelliJ to directly open:
 File -> New -> Project from Version Control -> GitHub, then configure JDK8, then you'll fly with colors! ^ ^
-* Please use JDK8 to run this application, due to https://stackoverflow.com/a/51169519/4117496
-
+* run `mvn install` to install depedencies on your machine
+* In your Intellij, click the Maven icon and click on Reload all Maven projects
 |      Package/Theme   |   Code
 |----------------|---------------
 |Avro|[Avro code](../master/src/main/java/avro)

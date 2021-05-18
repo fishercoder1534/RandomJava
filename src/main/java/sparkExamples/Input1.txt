@@ -1,0 +1,5 @@
+A wonderful king is Hadoop.
+The elephant plays well with Sqoop.
+But what helps him to thrive
+Are Impala, and Hive,
+And HDFS in the group.
