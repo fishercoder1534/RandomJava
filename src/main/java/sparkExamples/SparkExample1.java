@@ -11,7 +11,13 @@ import java.util.regex.Pattern;
 public class SparkExample1 {
     /**
      * How to run this program:
-     * mvn compile && mvn exec:java -Dexec.mainClass=sparkExamples.SparkExample1 -Dexec.args="sparkExamples/File1.txt sparkExamples/Output1.txt"
+     * 1. locally: mvn compile && mvn exec:java -Dexec.mainClass=sparkExamples.SparkExample1 -Dexec.args="sparkExamples/Input1.txt sparkExamples/Output1.txt"
+     * 2. on AWS EMR cluster:
+     *      upload the compiled jar file: RandomJava-1.0-SNAPSHOT.jar to an S3 bucket
+     *      click add steps to a ready cluster on AWS EMR
+     *      --class sparkExamples.SparkExample1
+     *      specify the jar in your S3 location
+     *      --s3://sunstev-test/Input1.txt --s3://sunstev-test/Output1.txt (in your arguments section)
      */
 
     private static final Pattern SPACE = Pattern.compile(" ");
@@ -28,7 +34,7 @@ public class SparkExample1 {
             SparkSession spark = SparkSession
                     .builder()
                     .appName("SparkJob")
-                    .config("spark.master", "local")
+                    .config("spark.master", "local")//keep this one commented out if you want to run in cluster mode
                     .getOrCreate();
             System.out.println("SparkSession is initated.");
 
