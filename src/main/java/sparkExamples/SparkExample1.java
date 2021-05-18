@@ -11,8 +11,9 @@ import java.util.regex.Pattern;
 public class SparkExample1 {
     /**
      * How to run this program:
-     * 1. locally: mvn compile && mvn exec:java -Dexec.mainClass=sparkExamples.SparkExample1 -Dexec.args="sparkExamples/Input1.txt sparkExamples/Output1.txt"
+     * 1. locally: mvn package && mvn exec:java -Dexec.mainClass=sparkExamples.SparkExample1 -Dexec.args="sparkExamples/Input1.txt sparkExamples/Output1.txt"
      * 2. on AWS EMR cluster:
+     *      mvn package
      *      upload the compiled jar file: RandomJava-1.0-SNAPSHOT.jar to an S3 bucket
      *      click add steps to a ready cluster on AWS EMR
      *      --class sparkExamples.SparkExample1

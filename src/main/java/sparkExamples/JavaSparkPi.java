@@ -13,14 +13,21 @@ import java.util.List;
  * Computes an approximation to pi
  * Usage: JavaSparkPi [slices]
  *
- * TODO: it's throwing Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 28499 when running locally through Intellij.
+ * NOTE: it's throwing Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 28499 when running locally through Intellij.
+ * But it runs fine on AWS EMR, here's how to run it on AWS EMR:
+ *    mvn package
+ *    upload the compiled jar file: RandomJava-1.0-SNAPSHOT.jar to an S3 bucket
+ *    click add steps to a ready cluster on AWS EMR
+ *    --class sparkExamples.JavaSparkPi
+ *    specify the jar in your S3 location
  */
 public final class JavaSparkPi {
 
     public static void main(String[] args) throws Exception {
         SparkConf sparkConf = new SparkConf()
                 .setAppName("JavaSparkPi")
-                .setMaster("local");
+//                .setMaster("local")//uncomment this if you run it on AWS EMR in cluster mode
+                ;
         JavaSparkContext jsc = new JavaSparkContext(sparkConf);
         System.out.println("JavaSparkContext is initiated.");
 
