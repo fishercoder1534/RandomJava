@@ -28,6 +28,7 @@ public class SparkExample1 {
         SparkSession spark = SparkSession
                 .builder()
                 .appName("SparkJob")
+                .config("spark.master", "local")
                 .getOrCreate();
 
         JavaRDD<String> textFile = spark.read().textFile(args[0]).toJavaRDD();
