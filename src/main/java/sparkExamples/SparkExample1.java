@@ -24,20 +24,27 @@ public class SparkExample1 {
             System.exit(1);
         }
         System.out.println("args.[0]:" + args[0] + ", args[1]: " + args[1]);
+        try {
+            SparkSession spark = SparkSession
+                    .builder()
+                    .appName("SparkJob")
+                    .config("spark.master", "local")
+                    .getOrCreate();
+            System.out.println("SparkSession is initated.");
 
-        SparkSession spark = SparkSession
-                .builder()
-                .appName("SparkJob")
-                .config("spark.master", "local")
-                .getOrCreate();
+            JavaRDD<String> textFile = spark.read().textFile(args[0]).toJavaRDD();
+            System.out.println("Finished reading this textFile: " + args[0]);
 
-        JavaRDD<String> textFile = spark.read().textFile(args[0]).toJavaRDD();
+            JavaPairRDD<String, Integer> counts = textFile
+                    .flatMap(s -> Arrays.asList(SPACE.split(s)).iterator())
+                    .mapToPair(s -> new Tuple2<>(s, 1))
+                    .reduceByKey((a, b) -> a + b);
+            System.out.println("Finished doing MapReduce option on this textFile: " + args[0]);
 
-        JavaPairRDD<String, Integer> counts = textFile
-                .flatMap(s -> Arrays.asList(SPACE.split(s)).iterator())
-                .mapToPair(s -> new Tuple2<>(s, 1))
-                .reduceByKey((a, b) -> a + b);
-
-        counts.saveAsTextFile(args[1]);
+            counts.saveAsTextFile(args[1]);
+            System.out.println("Finished saving output to this textFile: " + args[1]);
+        } catch (Exception e) {
+            System.out.println("Caught exception when processing: " + e);
+        }
     }
 }
