@@ -11,10 +11,7 @@ import java.util.regex.Pattern;
 public class SparkExample1 {
     /**
      * How to run this program:
-     * 1. mvn compile
-     * 2. mvn exec:java -Dexec.mainClass=sparkExamples.SparkExample1 -Dexec.args="sparkExamples/File1.txt sparkExamples/Output1.txt"
-     * <p>
-     * TODO: right now, it throws java.lang.NoClassDefFoundError: org/apache/spark/sql/SparkSession, fix it.
+     * mvn compile && mvn exec:java -Dexec.mainClass=sparkExamples.SparkExample1 -Dexec.args="sparkExamples/File1.txt sparkExamples/Output1.txt"
      */
 
     private static final Pattern SPACE = Pattern.compile(" ");
@@ -26,6 +23,7 @@ public class SparkExample1 {
             System.err.println("Usage: JavaWordCount <inputFile> <outputFile>");
             System.exit(1);
         }
+        System.out.println("args.[0]:" + args[0] + ", args[1]: " + args[1]);
 
         SparkSession spark = SparkSession
                 .builder()
