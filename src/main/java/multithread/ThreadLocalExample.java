@@ -23,7 +23,7 @@ public class ThreadLocalExample {
 
 	public static class MyRunnable implements Runnable {
 
-		private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
+		private ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
 
 		@Override
 		public void run() {
