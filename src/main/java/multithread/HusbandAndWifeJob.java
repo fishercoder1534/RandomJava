@@ -8,8 +8,8 @@ public class HusbandAndWifeJob implements Runnable {
      * @see java.lang.Runnable#run()
      */
     @Override
-    public void run() {ite
-            
+    public void run() {
+
         for (int i = 0; i < 10; i++) {
             makeWithdrawl(10);
             if (bankAccount.getBalance() < 0) {
