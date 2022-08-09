@@ -56,7 +56,7 @@ public class HusbandAndWifeJob implements Runnable {
 }
 
 class BankAccount {
-    private int balance = 100000;
+    private int balance = 100;
 
     public int getBalance() {
         return balance;
