@@ -38,15 +38,16 @@ public class ThreadLocalExample {
             System.out.println("threadLocal.get() is: " + threadLocal.get());
         }
 
-        public static void main(String... args) {
-            System.out.println("Program started.");
-            MyRunnable sharedRunnableInstance = new MyRunnable();
-            Thread t1 = new Thread(sharedRunnableInstance);
-            Thread t2 = new Thread(sharedRunnableInstance);
-            t1.start();
-            t2.start();
-            System.out.println("Program finished.");
-        }
+    }
+
+    public static void main(String... args) {
+        System.out.println("Program started.");
+        MyRunnable sharedRunnableInstance = new MyRunnable();
+        Thread t1 = new Thread(sharedRunnableInstance);
+        Thread t2 = new Thread(sharedRunnableInstance);
+        t1.start();
+        t2.start();
+        System.out.println("Program finished.");
     }
 
 }
