@@ -10,14 +10,14 @@ public class ThreadIsCool implements Runnable{
 		Thread thread1 = new Thread(threadIsCool);
 		Thread thread2 = new Thread(threadIsCool);
 		Thread thread3 = new Thread(threadIsCool);
-		thread1.setName("abc");
-		thread2.setName("def");
-		thread3.setName("ghi");
+		thread1.setName("Thread Andrew");
+		thread2.setName("Thread James");
+		thread3.setName("Thread Steve");
 		System.out.println("Now the three threads kick off:");
 		
 		thread1.start();
 		try {
-		    /* Start second thread(def) only when first thread(abc) is dead*/
+		    /* Wait for this thread to die before other invocations*/
             thread1.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -25,6 +25,7 @@ public class ThreadIsCool implements Runnable{
 		
 		thread2.start();
 		try {
+			/* Wait for this thread to die before other invocations*/
             thread2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -32,6 +33,7 @@ public class ThreadIsCool implements Runnable{
 		
 		thread3.start();
 		try {
+			/* Wait for this thread to die before other invocations*/
             thread3.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -41,7 +43,7 @@ public class ThreadIsCool implements Runnable{
 	
 	@Override
 	public void run(){
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 10; i++){
 			String threadName = Thread.currentThread().getName();
 			System.out.println(threadName + " is running!");
 		}
@@ -51,6 +53,7 @@ public class ThreadIsCool implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+		System.out.println(Thread.currentThread().getName() + " run finished.");
 	}
 	
 }
