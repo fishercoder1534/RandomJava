@@ -8,7 +8,8 @@ public class HusbandAndWifeJob implements Runnable {
      * @see java.lang.Runnable#run()
      */
     @Override
-    public void run() {
+    public void run() {ite
+            
         for (int i = 0; i < 10; i++) {
             makeWithdrawl(10);
             if (bankAccount.getBalance() < 0) {
@@ -25,13 +26,16 @@ public class HusbandAndWifeJob implements Runnable {
     private synchronized void makeWithdrawl(int amount) {
         if (bankAccount.getBalance() >= amount) {
             System.out.println(Thread.currentThread().getName() + " is about to withdraw: " + amount);
-            try {
-                System.out.println(Thread.currentThread().getName() + " is going to sleep.");
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(Thread.currentThread().getName() + " woke up.");
+
+//            this sleep block is trying to slow down the work and let you visualize what and how events occur: two threads will call makeWithdrawl() method randomly based on how the scheduler schedules it,wec you can comment it out
+//            try {
+//                System.out.println(Thread.currentThread().getName() + " is going to sleep.");
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            System.out.println(Thread.currentThread().getName() + " woke up.");
+
             bankAccount.withdraw(amount);
             System.out.println(Thread.currentThread().getName() + " finished withdrawl: " + amount + "\t now the balance is: " + bankAccount.getBalance());
         } else {
