@@ -151,6 +151,19 @@
             <version>1.7.30</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.backblaze.b2</groupId>
+            <artifactId>b2-sdk-core</artifactId>
+            <version>6.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.backblaze.b2</groupId>
+            <artifactId>b2-sdk-httpclient</artifactId>
+            <version>6.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
 
