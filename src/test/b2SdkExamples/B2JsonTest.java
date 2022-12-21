@@ -4,7 +4,9 @@ import com.backblaze.b2.json.B2Json;
 import com.backblaze.b2.json.B2JsonException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONException;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -180,23 +182,37 @@ public class B2JsonTest {
     }
 
     @Test
-    public void testRequestUsingB2Json() throws B2JsonException {
+    public void testRequestUsingB2Json() throws B2JsonException, JSONException {
         //B2Json always reorders the fields in the object in alphabetical order
         TestRequest obj = new TestRequest(123, "message", "aMessage", "bMessage", "pMessage", "zMessage", null, null, REASON_STR);
-        assertEquals(JSON_STRING_2, b2Json.toJson(obj));
         System.out.println("obj is: " + obj);
-        System.out.println("json is: " + JSON_STRING_2);
-//        assertEquals(obj, b2Json.fromJson(JSON_STRING_2, TestRequest.class));
+        String expected = "{\n" +
+                "  \"aMessage\": \"aMessage\",\n" +
+                "  \"bMessage\": \"bMessage\",\n" +
+                "  \"message\": \"message\",\n" +
+                "  \"pMessage\": \"pMessage\",\n" +
+                "  \"reason\": \"A TEST STRING FOR REASON\",\n" +
+                "  \"str\": 123,\n" +
+                "  \"zMessage\": \"zMessage\"\n" +
+                "}";
+        JSONAssert.assertEquals(expected, b2Json.toJson(obj), true);
     }
 
     @Test
-    public void testRequestUsingGson() {
+    public void testRequestUsingGson() throws JSONException {
         //GSON deserializes object fields in their given order in the constructor
         TestRequest obj = new TestRequest(123, "message", "aMessage", "bMessage", "pMessage", "zMessage", null, null, REASON_STR);
-//        assertEquals(JSON_STRING_2, gson.toJson(obj));
         System.out.println("obj is: " + obj);
-        System.out.println("json is: " + JSON_STRING_2);
-//        assertEquals(obj, gson.fromJson(JSON_STRING_2, TestRequest.class));
+        String expected = "{\n" +
+                "  \"aMessage\": \"aMessage\",\n" +
+                "  \"bMessage\": \"bMessage\",\n" +
+                "  \"message\": \"message\",\n" +
+                "  \"pMessage\": \"pMessage\",\n" +
+                "  \"reason\": \"A TEST STRING FOR REASON\",\n" +
+                "  \"str\": 123,\n" +
+                "  \"zMessage\": \"zMessage\"\n" +
+                "}";
+        JSONAssert.assertEquals(expected, gson.toJson(obj), false);
     }
 
 }
