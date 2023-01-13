@@ -10,6 +10,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,20 +52,29 @@ public class B2JsonTest {
         @B2Json.ignored
         public int c;
 
-        @B2Json.constructor(params = "a, b")
-        public Container(int a, String b) {
+        @B2Json.optionalWithDefault(defaultValue = "0")
+        public int d;
+
+        @B2Json.constructor(params = "a, b, d")
+        public Container(int a, String b, int d) {
             this.a = a;
             this.b = b;
             this.c = 5;
+            this.d = d;
         }
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof Container)) {
-                return false;
-            }
-            Container other = (Container) o;
-            return a == other.a && (b == null ? other.b == null : b.equals(other.b));
+            System.out.println("Entered overridden equals() method to check now...");
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Container container = (Container) o;
+            return a == container.a && d == container.d && Objects.equals(b, container.b);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(a, b, c, d);
         }
     }
 
@@ -169,16 +179,48 @@ public class B2JsonTest {
 
     @Test
     public void testObject() throws B2JsonException {
-        String json =
-                "{\n" +
-                        "  \"a\": 41,\n" +
-                        "  \"b\": \"hello\"\n" +
-                        "}";
-        Container obj = new Container(41, "hello");
+        String json = "{\n" +
+                "  \"a\": 41,\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"d\": 15\n" +
+                "}";
+        Container obj = new Container(41, "hello", 15);
         assertEquals(json, b2Json.toJson(obj));
         System.out.println("obj is: " + obj);
         System.out.println("json is: " + json);
         assertEquals(obj, b2Json.fromJson(json, Container.class));
+    }
+
+    @Test
+    public void testObjectUsingDefaultValue() throws B2JsonException {
+        //in this json string, there's no field d which is an optional field with a default value
+        String json = "{\n" +
+                "  \"a\": 2023,\n" +
+                "  \"b\": \"hello\"\n" +
+                "}";
+        System.out.println("json is: " + json);
+        Container fromB2Json = b2Json.fromJson(json, Container.class);
+        System.out.println("b2Json.fromJson(json, Container.class) is: " + fromB2Json);
+        Container fromGson = gson.fromJson(json, Container.class);
+        System.out.println("gson.fromJson(json) is: " + fromGson);
+        System.out.println("about to check the equality between Gson and B2Json results..");
+        assertEquals(fromGson, fromB2Json);
+        String fromB2JsonString = b2Json.toJson(fromB2Json);
+        String fromGsonString = gson.toJson(fromB2Json);
+        String expectedFromGson = "{\n" +
+                "  \"a\": 2023,\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"c\": 5,\n" +
+                "  \"d\": 0\n" +
+                "}";
+        assertEquals(expectedFromGson, fromGsonString);
+        //there's no field c as it's annotated by B2Json.ignored
+        String expectedFromB2Json = "{\n" +
+                "  \"a\": 2023,\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"d\": 0\n" +
+                "}";
+        assertEquals(expectedFromB2Json, fromB2JsonString);
     }
 
     @Test
