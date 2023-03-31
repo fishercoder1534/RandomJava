@@ -111,17 +111,7 @@ public class B2JsonTest {
         @B2Json.optional(omitNull = true)
         public final String reason;
 
-        @B2Json.constructor(params = "" +
-                "str," +
-                "message," +
-                "aMessage," +
-                "bMessage," +
-                "pMessage," +
-                "zMessage," +
-                "localDateTime," +
-                "localDate," +
-                "reason"
-        )
+        @B2Json.constructor
         public TestRequest(Integer str, String message, String aMessage, String bMessage, String pMessage, String zMessage, LocalDateTime localDateTime, LocalDate localDate, String reason) {
             this.str = str;
             this.message = message;
