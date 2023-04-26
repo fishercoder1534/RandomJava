@@ -4,6 +4,7 @@ import com.backblaze.b2.json.B2Json;
 import com.backblaze.b2.json.B2JsonException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 /**
  * Reference: https://github.com/Backblaze/b2-sdk-java/blob/0ecd68df94691cbba5a6af363246b7193aead234/core/src/test/java/com/backblaze/b2/json/B2JsonTest.java
@@ -359,6 +361,46 @@ public class B2JsonTest {
                 "  \"zMessage\": \"zMessage\"\n" +
                 "}";
         JSONAssert.assertEquals(expected, gson.toJson(obj), false);
+    }
+
+    @Test
+    public void testRequest2UsingB2Json() {
+        /**
+         * the field zip is declared as an Integer, but we are passing in a string, in this case
+         * it throws com.backblaze.b2.json.B2JsonException: Bad number
+         * */
+        String request2Json = "{\n" + "\"zip\": \"95148\"\n" + "}";
+        assertThrows(B2JsonException.class, () -> b2Json.fromJson(request2Json, TestRequest2.class));
+    }
+
+    private static class TestRequest2 {
+        @B2Json.optional(omitNull = true)
+        public final Integer zip;
+
+        @B2Json.constructor(params = "zip")
+        public TestRequest2(Integer zip) {
+            this.zip = zip;
+        }
+    }
+
+    @Test
+    public void testRequest3UsingB2Json() {
+        /**
+         * the field zip is declared as a String, but we are passing in an Integer
+         * in this case, it throws: com.backblaze.b2.json.B2JsonException: string does not start with quote
+         * */
+        String request2Json = "{\n" + "\"zip\": 95148\n" + "}";
+        assertThrows(B2JsonException.class, () -> b2Json.fromJson(request2Json, TestRequest3.class));
+    }
+
+    private static class TestRequest3 {
+        @B2Json.optional(omitNull = true)
+        public final String zip;
+
+        @B2Json.constructor(params = "zip")
+        public TestRequest3(String zip) {
+            this.zip = zip;
+        }
     }
 
 }
