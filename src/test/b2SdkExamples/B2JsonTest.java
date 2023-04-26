@@ -5,12 +5,14 @@ import com.backblaze.b2.json.B2JsonException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Objects;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -157,6 +159,15 @@ public class B2JsonTest {
         @B2Json.optional(omitNull = true)
         public final LocalDate localDate;
 
+        @B2Json.required
+        public final Map<Integer, Map<String, BigDecimal>> revenueMap;
+
+        @B2Json.required
+        public final Map<String, Long> simpleMap;
+
+        @B2Json.required
+        public final Set<String> categories;
+
         @B2Json.constructor(params = "" +
                 "str," +
                 "message," +
@@ -164,9 +175,15 @@ public class B2JsonTest {
                 "succeeded," +
                 "status," +
                 "localDateTime," +
-                "localDate"
+                "localDate," +
+                "revenueMap," +
+                "simpleMap," +
+                "categories"
         )
-        public TestResponse(String str, String message, String reason, boolean succeeded, int status, LocalDateTime localDateTime, LocalDate localDate) {
+        public TestResponse(String str, String message, String reason, boolean succeeded, int status, LocalDateTime localDateTime, LocalDate localDate,
+                            Map<Integer, Map<String, BigDecimal>> revenueMap,
+                            Map<String, Long> simpleMap,
+                            Set<String> categories) {
             this.str = str;
             this.message = message;
             this.reason = reason;
@@ -174,7 +191,94 @@ public class B2JsonTest {
             this.status = status;
             this.localDateTime = localDateTime;
             this.localDate = localDate;
+            this.simpleMap = simpleMap;
+            this.revenueMap = revenueMap;
+            this.categories = categories;
         }
+    }
+
+//    @Test
+//    public void testResponseUsingB2Json() throws B2JsonException, JSONException {
+//        Map<String, Map<String, BigDecimal>> revenueMap = new TreeMap<>();
+//        Map<String, Long> simpleMap = new TreeMap<>();
+//        TestResponse obj = new TestResponse("str",
+//                "message",
+//                "reason",
+//                true,
+//                200,
+//                LocalDateTime.of(2023, 03, 31, 12, 21),
+//                LocalDate.of(2023, 03, 31),
+//                revenueMap,
+//                simpleMap,
+//                Set.of("test"));
+//        System.out.println("obj is: " + obj);
+//        String expected = "{\n" +
+//                "  \"categories\": [\n" +
+//                "    \"test\"\n" +
+//                "  ],\n" +
+//                "  \"localDate\": \"20230331\",\n" +
+//                "  \"localDateTime\": \"d20230331_m122100\",\n" +
+//                "  \"message\": \"message\",\n" +
+//                "  \"reason\": \"reason\",\n" +
+//                "  \"revenueMap\": {},\n" +
+//                "  \"simpleMap\": {},\n" +
+//                "  \"status\": 200,\n" +
+//                "  \"str\": \"str\",\n" +
+//                "  \"succeeded\": true\n" +
+//                "}";
+//        System.out.println("b2Json.toJson(obj): " + b2Json.toJson(obj));
+//        JSONAssert.assertEquals(expected, b2Json.toJson(obj), true);
+//    }
+
+    @Test
+    @Ignore
+    public void testResponseUsingGson() throws JSONException {
+        Map<Integer, Map<String, BigDecimal>> revenueMap = new TreeMap<>();
+        revenueMap.put(123, new HashMap<>());
+        Map<String, Long> simpleMap = new TreeMap<>();
+        TestResponse obj = new TestResponse("str",
+                "message",
+                "reason",
+                true,
+                200,
+                LocalDateTime.of(2023, 03, 31, 12, 21),
+                LocalDate.of(2023, 03, 31),
+                revenueMap,
+                simpleMap,
+                Set.of("test"));
+        System.out.println("obj is: " + obj);
+        String expected = "{\n" +
+                "  \"str\": \"str\",\n" +
+                "  \"message\": \"message\",\n" +
+                "  \"reason\": \"reason\",\n" +
+                "  \"succeeded\": true,\n" +
+                "  \"status\": 200,\n" +
+                "  \"localDateTime\": {\n" +
+                "    \"date\": {\n" +
+                "      \"year\": 2023,\n" +
+                "      \"month\": 3,\n" +
+                "      \"day\": 31\n" +
+                "    },\n" +
+                "    \"time\": {\n" +
+                "      \"hour\": 12,\n" +
+                "      \"minute\": 21,\n" +
+                "      \"second\": 0,\n" +
+                "      \"nano\": 0\n" +
+                "    }\n" +
+                "  },\n" +
+                "  \"localDate\": {\n" +
+                "    \"year\": 2023,\n" +
+                "    \"month\": 3,\n" +
+                "    \"day\": 31\n" +
+                "  },\n" +
+                "  \"revenueMap\": {},\n" +
+                "  \"simpleMap\": {},\n" +
+                "  \"categories\": [\n" +
+                "    \"test\"\n" +
+                "  ]\n" +
+                "}";
+        System.out.println("b2Json.toJson(obj): " + gson.toJson(obj));
+        JSONAssert.assertEquals(expected, gson.toJson(obj), true);
     }
 
     @Test
