@@ -214,8 +214,8 @@ public class B2JsonTest {
         System.out.println("obj is: " + obj);
         String expected = "{\n" +
                 "  \"categories\": [\n" +
-                "    \"test1\",\n" +
-                "    \"test2\"\n" +
+                "    \"test2\",\n" +
+                "    \"test1\"\n" +
                 "  ],\n" +
                 "  \"localDate\": \"20230331\",\n" +
                 "  \"localDateTime\": \"d20230331_m122100\",\n" +
@@ -310,11 +310,11 @@ public class B2JsonTest {
         System.out.println("about to check the equality between Gson and B2Json results..");
         assertEquals(fromGson, fromB2Json);
         String fromB2JsonString = b2Json.toJson(fromB2Json);
-        String fromGsonString = gson.toJson(fromB2Json);
+        String fromGsonString = gson.toJson(fromGson);
         String expectedFromGson = "{\n" +
                 "  \"a\": 2023,\n" +
                 "  \"b\": \"hello\",\n" +
-                "  \"c\": 5,\n" +
+                "  \"c\": 0,\n" +
                 "  \"d\": 0\n" +
                 "}";
         assertEquals(expectedFromGson, fromGsonString);
@@ -401,4 +401,44 @@ public class B2JsonTest {
         }
     }
 
+    @Test
+    public void testGsonFailure() {
+        // there's an unknown field called e in this json string, in this case, GSON library will just ignore it
+        String json = "{\n" +
+                "  \"a\": 2023,\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"e\": \"hello\"\n" +
+                "}";
+        System.out.println("json is: " + json);
+        Container fromGson = gson.fromJson(json, Container.class);
+        System.out.println("gson.fromJson(json) is: " + fromGson);
+        System.out.println("about to check the equality between Gson and B2Json results..");
+        String fromGsonString = gson.toJson(fromGson);
+        String expectedFromGson = "{\n" +
+                "  \"a\": 2023,\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"c\": 0,\n" +
+                "  \"d\": 0\n" +
+                "}";
+        assertEquals(expectedFromGson, fromGsonString);
+
+        // in this json, the field named a is missing
+        json = "{\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"e\": \"hello\"\n" +
+                "}";
+        System.out.println("2nd time, json is: " + json);
+        fromGson = gson.fromJson(json, Container.class);
+        System.out.println("2nd time, gson.fromJson(json) is: " + fromGson);
+        System.out.println("about to check the equality between Gson and B2Json results..");
+        fromGsonString = gson.toJson(fromGson);
+        System.out.println("2nd time, fromGsonString is: " + fromGsonString);
+        expectedFromGson = "{\n" +
+                "  \"a\": 0,\n" +
+                "  \"b\": \"hello\",\n" +
+                "  \"c\": 0,\n" +
+                "  \"d\": 0\n" +
+                "}";
+        assertEquals(expectedFromGson, fromGsonString);
+    }
 }
