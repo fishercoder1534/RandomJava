@@ -5,7 +5,7 @@ import com.backblaze.b2.json.B2JsonException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.math.BigDecimal;
@@ -13,8 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Reference: https://github.com/Backblaze/b2-sdk-java/blob/0ecd68df94691cbba5a6af363246b7193aead234/core/src/test/java/com/backblaze/b2/json/B2JsonTest.java

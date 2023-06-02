@@ -1,31 +1,17 @@
 package guice.relearn_2019_09._8_already_configured_exception;
 
-import static com.google.inject.name.Names.named;
-
-import com.google.inject.AbstractModule;
-import com.google.inject.ConfigurationException;
-import com.google.inject.CreationException;
-import com.google.inject.Exposed;
-import com.google.inject.Guice;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-import com.google.inject.Key;
-import com.google.inject.PrivateBinder;
-import com.google.inject.PrivateModule;
-import com.google.inject.Provider;
-import com.google.inject.Provides;
+import com.google.inject.*;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
-import com.google.inject.spi.Dependency;
 import com.google.inject.spi.ExposedBinding;
-import com.google.inject.spi.PrivateElements;
 import com.google.inject.util.Types;
-
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import static com.google.inject.name.Names.named;
 
 public class PrivateModuleTest extends TestCase {
 
