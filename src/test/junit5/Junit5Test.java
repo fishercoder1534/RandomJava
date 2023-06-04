@@ -30,12 +30,13 @@ public class Junit5Test {
     @DisplayName("Single test successful")
     @Test
     void testSingleSuccessTest() {
-        System.out.println("Success");
+        System.out.println("in testSingleSuccessTest");
         assertEquals(5 + 2, 7);
     }
 
     @Test
     void shouldThrowException() {
+        System.out.println("in shouldThrowException");
         Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
             throw new UnsupportedOperationException("Not supported");
         });
@@ -44,6 +45,7 @@ public class Junit5Test {
 
     @Test
     void assertThrowsException() {
+        System.out.println("in assertThrowsException");
         String str = null;
         assertThrows(IllegalArgumentException.class, () -> {
             Integer.valueOf(str);
@@ -53,6 +55,7 @@ public class Junit5Test {
     @ParameterizedTest
     @MethodSource("data")
     public void parameterizedTest(String input, boolean expected) {
+        System.out.println("input is: " + input + ", expected is: " + expected);
         assertEquals(expected, Strings.isBlank(input));
     }
 
