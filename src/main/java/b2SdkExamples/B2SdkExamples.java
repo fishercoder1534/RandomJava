@@ -19,8 +19,10 @@ public class B2SdkExamples {
 //        B2StorageClient client = B2StorageClientFactory.createDefaultFactory().create(USER_AGENT);
         //set up B2 CLI
         //and then use b2 get-account-info to get applicationKeyId and applicationKey to fill in here and run
-        B2StorageClient client = B2StorageClientFactory.createDefaultFactory().create(APPLICATION_KEY_ID, APPLICATION_KEY, USER_AGENT);
-        B2ListBucketsResponse b2ListBucketsResponse = client.listBuckets();
+        B2ListBucketsResponse b2ListBucketsResponse;
+        try (B2StorageClient client = B2StorageClientFactory.createDefaultFactory().create(APPLICATION_KEY_ID, APPLICATION_KEY, USER_AGENT)) {
+            b2ListBucketsResponse = client.listBuckets();
+        }
         List<B2Bucket> buckets = b2ListBucketsResponse.getBuckets();
         System.out.println("buckets.size() is: " + buckets.size());
         for (B2Bucket b2Bucket : buckets) {
