@@ -14,7 +14,7 @@ public class SyncClientImpl implements SyncClient {
 
 	@Override
 	public void executeSynchronous(String userId) {
-		List<Future<String>> list = new ArrayList<Future<String>>();
+		List<Future<String>> list = new ArrayList<>();
 		
 		Callable<String> callable = new Task(userId);
 		
