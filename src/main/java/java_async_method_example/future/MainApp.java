@@ -17,10 +17,10 @@ public class MainApp {
 //									Executors.newSingleThreadExecutor()
 //									Executors.newCachedThreadPool()
 									Executors.newScheduledThreadPool(15);
-		/**thread pool account could be a bottleneck when it's smaller than 10 which is the max in the below for loop.
+		/**thread pool count could be a bottleneck when it's smaller than 10 which is the max in the below for loop.
 		 * so when I changed the ThreadPool size to 15, then ALL Future objects got returned at the same time! Cool!*/
 		
-		List<Future<String>> list = new ArrayList<Future<String>>();
+		List<Future<String>> list = new ArrayList<>();
 		
 		Callable<String> callable = new MyCallable();
 		
