@@ -30,6 +30,8 @@ public class CompletableFutureDemo2 {
             finalResult += Integer.parseInt(result);
         }
         long end = System.currentTimeMillis();
+        System.out.println("end: " + end);
+        System.out.println("start: " + start);
         System.out.println("It took " + (end - start) / 1000
                 + " seconds to complete computation, final result: " + finalResult
                 + ", a total of " + NUMBER_OF_COMPUTATION_JOBS + " computation jobs "
