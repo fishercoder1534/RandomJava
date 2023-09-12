@@ -1,6 +1,6 @@
 package profiler;
 
-public class Main {
+public class SimpleProfiler {
     /**
      * From this post: https://stackoverflow.com/a/9415368/4117496
      * To run this: go to terminal and use this command:
