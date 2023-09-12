@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.concurrent.TimeUnit;
 
-public class IntellijProfiler {
+public class IntellijProfilerExample {
     /**Source: https://github.com/flounder4130/profiler-example/tree/master*/
     public static int update(Deque<Long> events, long nanos, long interval) {
         events.add(nanos);
@@ -24,6 +24,7 @@ public class IntellijProfiler {
     }
 
     public static void main(String[] args) throws IOException {
+        System.out.println("Program started.");
         long start = System.nanoTime();
         int total = 100_000;
         long interval = TimeUnit.MILLISECONDS.toNanos(100);
@@ -45,5 +46,6 @@ public class IntellijProfiler {
         //noinspection OptionalGetWithoutIsPresent
         System.out.println("Average count: " + (int) (Arrays.stream(count).average().getAsDouble()) + " op");
         System.out.println("Spent time: " + TimeUnit.NANOSECONDS.toMillis(spent) + " ms");
+        System.out.println("\nProgram finished.");
     }
 }
