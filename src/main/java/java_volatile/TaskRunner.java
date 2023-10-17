@@ -1,6 +1,9 @@
 package java_volatile;
 
 public class TaskRunner {
+    /**
+     * This is following the examples from https://www.baeldung.com/java-volatile
+     */
     private static int number;
     private static boolean ready;
 
