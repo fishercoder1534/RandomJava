@@ -16,10 +16,10 @@ public class B2SdkExamples {
     private static final String APPLICATION_KEY = "yyy";
 
 
-
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36";
 
     private static final int minimumPartSize = 5000000;
+//    TODO: read in a big file or generate a random file to fill into below byte array
     private static final byte[] large_file_in_bytes = new byte[minimumPartSize + 1];
 
     public static void main(String... args) throws B2Exception {
@@ -54,6 +54,7 @@ public class B2SdkExamples {
 //            uploadPartUrl.getFileId() is: 4_zc0c2ee6e6dccd2d788960d17_f231f3059ce9d1672_d20231118_m042524_c004_v0402007_t0004_u01700281524855
 //            uploadPartUrl.getUploadUrl() is: https://pod-040-2007-12.backblaze.com/b2api/v2/b2_upload_part/4_zc0c2ee6e6dccd2d788960d17_f231f3059ce9d1672_d20231118_m042524_c004_v0402007_t0004_u01700281524855/0014
 
+//            TODO: figure out how to make below API call work elegantly
             final B2UploadFileRequest request = B2UploadFileRequest.builder(
                     bucketOne.getBucketId(),
                     "largeFile",
