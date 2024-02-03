@@ -19,7 +19,10 @@ public class CompletableFutureDemo {
 
     private static void runApp() throws InterruptedException, ExecutionException {
         Future<String> completableFuture = calculateAsync();
+        System.out.println("got completableFuture: " + completableFuture);
+        System.out.println("got completableFuture.isDone(): " + completableFuture.isDone());
         String result = completableFuture.get();
+        System.out.println("got completableFuture.isDone(): " + completableFuture.isDone());
         assertEquals("Hello", result);
     }
 
@@ -27,8 +30,9 @@ public class CompletableFutureDemo {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
         Executors.newCachedThreadPool().submit(() -> {
-            Thread.sleep(1000);
             System.out.println("Doing some work in the thread now..");
+            Thread.sleep(1000);
+            System.out.println("Almost done working in the thread now..");
             completableFuture.complete("Hello");
             return null;
         });

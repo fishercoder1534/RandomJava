@@ -23,6 +23,7 @@ public class CompletableFutureDemo2 {
         List<Future<String>> futureList = new ArrayList<>();
         for (int i = 1; i <= NUMBER_OF_COMPUTATION_JOBS; i++) {
             Future<String> completableFuture = workerPool.executeAsync(i);
+            System.out.println("i = " + i + " and completableFuture.isDone() is: " + completableFuture.isDone());
             futureList.add(completableFuture);
         }
         for (Future<String> future : futureList) {
@@ -30,8 +31,8 @@ public class CompletableFutureDemo2 {
             finalResult += Integer.parseInt(result);
         }
         long end = System.currentTimeMillis();
-        System.out.println("end: " + end);
-        System.out.println("start: " + start);
+        System.out.println("end time in millis: " + end);
+        System.out.println("start time in millis: " + start);
         System.out.println("It took " + (end - start) / 1000
                 + " seconds to complete computation, final result: " + finalResult
                 + ", a total of " + NUMBER_OF_COMPUTATION_JOBS + " computation jobs "
