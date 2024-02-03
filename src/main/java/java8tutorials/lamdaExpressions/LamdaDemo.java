@@ -1,9 +1,12 @@
 package java8tutorials.lamdaExpressions;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by stevesun on 4/16/17.
@@ -68,16 +71,30 @@ public class LamdaDemo {
         print(names, "After sorting: ");
     }
 
+    public static void sortInJava8_use_lamda_expressions_and_stream() {
+        List<Person> names = Arrays.asList(new Person("Sophie", 27), new Person("Ada", 1),
+                new Person("Steve", 28), new Person("Eason", 26), new Person("Jenny", 31));
+
+        System.out.println("In sortInJava8_use_lamda_expressions_using_stream method.");
+        print(names, "Prior to sort: ");
+
+        List<Person> sorted = names.stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
+
+        print(sorted, "After sorting: ");
+    }
+
     public static void main(String...args) {
         sortInPreJava8();
         sortInJava8_use_lamda_expressions();
         sortInJava8_use_lamda_expressions_shorter();
         sortInJava8_use_lamda_expressions_shorter_even();
+        sortInJava8_use_lamda_expressions_and_stream();
     }
 }
 
 class Person {
     String name;
+    @Getter
     int age;
     public Person (String name, int age) {
         this.name = name;
