@@ -83,12 +83,23 @@ public class LamdaDemo {
         print(sorted, "After sorting: ");
     }
 
+    public static void sortInJava8_use_lamda_expressions_and_stream_and_filter() {
+        List<Person> names = Arrays.asList(new Person("Sophie", 27), new Person("Ada", 1),
+                new Person("Steve", 28), new Person("Eason", 26), new Person("Jenny", 31));
+
+        System.out.println("In sortInJava8_use_lamda_expressions_and_stream_and_filter method.");
+
+        names.stream().distinct().forEach(System.out::println);
+        names.stream().map(person -> person.name.charAt(0)).distinct().forEach(System.out::println);
+    }
+
     public static void main(String...args) {
         sortInPreJava8();
         sortInJava8_use_lamda_expressions();
         sortInJava8_use_lamda_expressions_shorter();
         sortInJava8_use_lamda_expressions_shorter_even();
         sortInJava8_use_lamda_expressions_and_stream();
+        sortInJava8_use_lamda_expressions_and_stream_and_filter();
     }
 }
 
