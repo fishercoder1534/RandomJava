@@ -12,8 +12,8 @@ package multithread.synchronization.withSynchronization;
  * When we start two or more threads within a program, there may be a situation
  * when multiple threads try to access the same resource and finally they can
  * produce unforeseen result due to concurrency issue. For example if multiple
- * threads try to write within a same file then they may corrupt the data
- * because one of the threads can overrite data or while one thread is opening
+ * threads try to write within the same file then they may corrupt the data
+ * because one of the threads can overwrite data or while one thread is opening
  * the same file at the same time another thread might be closing the same file.
  * 
  * So there is a need to synchronize the action of multiple threads and make
@@ -27,11 +27,11 @@ package multithread.synchronization.withSynchronization;
  * resources within this block. Following is the general form of the
  * synchronized statement:
  * 
- * synchronized(objectidentifier) { 
+ * synchronized(objectIdentifier) {
  * // Access shared variables and other shared resources 
  * }
  * 
- * Here, the objectidentifier is a reference to an object whose lock associates
+ * Here, the objectIdentifier is a reference to an object whose lock associates
  * with the monitor that the synchronized statement represents. Now we are going
  * to see two examples where we will print a counter using two different
  * threads. When threads are not synchronized, they print counter value which is
@@ -40,19 +40,18 @@ package multithread.synchronization.withSynchronization;
  */
 public class TestThread {
 	public static void main(String args[]) {
+		PrintDemo printDemo = new PrintDemo();
 
-		PrintDemo PD = new PrintDemo();
+		ThreadDemo threadOne = new ThreadDemo("Thread - 1 ", printDemo);
+		ThreadDemo threadTwo = new ThreadDemo("Thread - 2 ", printDemo);
 
-		ThreadDemo T1 = new ThreadDemo("Thread - 1 ", PD);
-		ThreadDemo T2 = new ThreadDemo("Thread - 2 ", PD);
-
-		T1.start();
-		T2.start();
+		threadOne.start();
+		threadTwo.start();
 
 		// wait for threads to end
 		try {
-			T1.join();
-			T2.join();
+			threadOne.join();
+			threadTwo.join();
 		} catch (Exception e) {
 			System.out.println("Interrupted");
 		}
@@ -62,29 +61,30 @@ public class TestThread {
 class PrintDemo {
 	public void printCount() {
 		try {
+			System.out.println(Thread.currentThread().getName() + " is working now..");
 			for (int i = 5; i > 0; i--) {
-				System.out.println("Counter   ---   " + i);
+				System.out.println("Counter   ---   " + i + " from thread: " + Thread.currentThread().getName());
 			}
 		} catch (Exception e) {
 			System.out.println("Thread  interrupted.");
 		}
 	}
-
 }
 
 class ThreadDemo extends Thread {
 	private Thread t;
 	private String threadName;
-	PrintDemo PD;
+	PrintDemo printDemo;
 
 	ThreadDemo(String name, PrintDemo pd) {
 		threadName = name;
-		PD = pd;
+		printDemo = pd;
 	}
 
 	public void run() {
-		synchronized (PD) {//Here's all the difference between the two examples! It uses this synchronized keyword to identify the resources that need to be synchronized!
-			PD.printCount();
+		//Here's all the difference between the two examples! It uses this synchronized keyword to identify the resources that need to be synchronized!
+		synchronized (printDemo) {
+			printDemo.printCount();
 		}
 		System.out.println("Thread " + threadName + " exiting.");
 	}
