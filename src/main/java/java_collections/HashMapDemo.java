@@ -2,13 +2,13 @@ package java_collections;
 
 import java.util.Map;
 
-public class HashMap {
+public class HashMapDemo {
     private static final int NUMBER_OF_MAP_ENTRIES = 2;
 
     public static void main(String... args) {
         System.out.println("Program started.");
-        HashMap hashMap = new HashMap();
-        hashMap.understandHashMapInternalWorkings();
+        HashMapDemo hashMapDemo = new HashMapDemo();
+        hashMapDemo.understandHashMapInternalWorkings();
         System.out.println("Program finished.");
     }
 
