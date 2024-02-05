@@ -1,15 +1,14 @@
 package java_collections;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public class MainApp {
+public class HashMap {
     private static final int NUMBER_OF_MAP_ENTRIES = 2;
 
     public static void main(String... args) {
         System.out.println("Program started.");
-        MainApp mainApp = new MainApp();
-        mainApp.understandHashMapInternalWorkings();
+        HashMap hashMap = new HashMap();
+        hashMap.understandHashMapInternalWorkings();
         System.out.println("Program finished.");
     }
 
@@ -28,7 +27,7 @@ public class MainApp {
          *
          * To have a high-performance hashMap we need good implementation of hashCode() and equals() method along with hash function.
          * */
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new java.util.HashMap<>();
         for (int i = 0; i < NUMBER_OF_MAP_ENTRIES; i++) {
             map.put("key" + i, "value" + i);
         }
