@@ -17,7 +17,7 @@ public class JavaFileIOExample {
         System.out.println("Program finished.");
     }
 
-    private static void readFileOnDisk() throws IOException {
+    public static void readFileOnDisk() throws IOException {
         String file = "src/test/resources/sample_input.txt";
         Scanner scanner = new Scanner(new File(file));
         scanner.useDelimiter(" ");
