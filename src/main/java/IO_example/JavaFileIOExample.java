@@ -12,14 +12,13 @@ public class JavaFileIOExample {
 
     public static void main(String... args) throws IOException {
         System.out.println("Program started.");
-        readFileOnDisk();
+        readFileOnDisk("src/test/resources/sample_input.txt");
         findUniqueCityNames();
         System.out.println("Program finished.");
     }
 
-    public static void readFileOnDisk() throws IOException {
-        String file = "src/test/resources/sample_input.txt";
-        Scanner scanner = new Scanner(new File(file));
+    public static void readFileOnDisk(String filePath) throws IOException {
+        Scanner scanner = new Scanner(new File(filePath));
         scanner.useDelimiter(" ");
 
         assertTrue(scanner.hasNext());
