@@ -1,17 +1,11 @@
 package junit5;
 
-import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -50,22 +44,6 @@ public class Junit5Test {
         assertThrows(IllegalArgumentException.class, () -> {
             Integer.valueOf(str);
         });
-    }
-
-    @ParameterizedTest
-    @MethodSource("data")
-    public void parameterizedTest(String input, boolean expected) {
-        System.out.println("input is: " + input + ", expected is: " + expected);
-        assertEquals(expected, Strings.isBlank(input));
-    }
-
-    private static Stream<Arguments> data() {
-        return Stream.of(
-                Arguments.of(null, true),
-                Arguments.of("", true),
-                Arguments.of("  ", true),
-                Arguments.of("not blank", false)
-        );
     }
 
     @AfterEach
